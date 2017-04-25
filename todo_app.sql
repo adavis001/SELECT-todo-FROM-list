@@ -1,0 +1,20 @@
+DROP USER IF EXISTS michael CASCADE;
+
+CREATE USER michael ENCRYPTED PASSWORD 'stonebreaker';
+
+DROP DATABASE IF EXISTS todo_app;
+
+CREATE DATABASE todo_app;
+
+\c todo_app;
+
+CREATE TABLE tasks (
+id SERIAL NOT NULL PRIMARY KEY,
+title VARCHAR (255) NOT NULL,
+description TEXT NULL,
+created_at TIMESTAMP DEFAULT now(),
+updated_at TIMESTAMP NULL,
+completed BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+ALTER TABLE tasks ADD PRIMARY KEY (id);
